@@ -20,10 +20,10 @@ class Kelt:
             self.df['t_k'] = self.df.t - 2450000
         else:
             self.df['t_k'] = self.df.t
-        print('before flux')
+        # print('before flux')
         self.df['flux'] = 10 ** (-0.4 * (self.df.m - 1.08))
 
-        print(self.__dict__.keys())
+        # print(self.__dict__.keys())
 
     def set_power_period(self, nt=5, min_p=1, max_p=100, n_f=10000, auto=True, method='LS_astropy'):
         self.pmin = min_p
@@ -55,7 +55,7 @@ class Kelt:
             sys.exit()
         # setting_period
         period = (1. / self.frequency[np.argmax(self.power)])
-        print("p f p-f", period, np.fix(period), period-np.fix(period))
+        # print("p f p-f", period, np.fix(period), period-np.fix(period))
         if period - np.fix(period) < 0.009:
             self.period = (1. / self.frequency[(np.asarray(self.power).argsort()[-2])])
         else:
